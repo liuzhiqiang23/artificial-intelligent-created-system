@@ -1,0 +1,7 @@
+已加载 1 个文档
+
+=== 查询问题 ===
+Ollama 支持哪些模型？常用命令有哪些？
+
+=== 回答 ===
+Ollama 支持多种开源模型，如 Llama 系列、Qwen 通义千问系列、Mistral 等。常用命令包括 `ollama pull <模型名>`、 `ollama run <模型名>` 和 `ollama list`。

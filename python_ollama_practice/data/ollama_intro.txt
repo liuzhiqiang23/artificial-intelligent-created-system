@@ -1,0 +1,16 @@
+Ollama 是一个本地大语言模型运行工具，可以在自己的电脑上便捷地运行和部署大模型。
+
+Ollama 支持多种开源模型，例如 Llama 系列、Qwen 通义千问系列、Mistral 等。通过 Ollama，用户无需配置复杂的深度学习环境，只需要一条 `ollama pull` 命令即可下载模型，再通过 `ollama run` 与模型交互。
+
+Ollama 提供了一个 OpenAI 兼容的 REST API，默认监听在 11434 端口。通过这个接口，用户可以像调用 OpenAI 一样调用本地模型，方便接入各种应用。
+
+Ollama 支持 GPU 加速。在有 NVIDIA 显卡的机器上，Ollama 会自动利用 CUDA 进行推理加速；在没有 GPU 时也可以退回到 CPU 运行，只是速度会慢一些。
+
+使用 Ollama 常用的命令包括：
+- `ollama pull <模型名>`：下载模型到本地
+- `ollama run <模型名>`：运行模型并进入交互对话
+- `ollama list`：查看本地已下载的模型
+- `ollama rm <模型名>`：删除本地模型
+- `ollama serve`：启动 Ollama 服务（默认 11434 端口）
+
+Ollama 在自然语言处理领域有着广泛的应用，例如本地私有化部署、离线推理、大模型应用开发调试等场景。

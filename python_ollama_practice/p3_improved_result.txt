@@ -1,0 +1,14 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|██████████| 71/71 [00:00<00:00, 13813.05it/s]
+已加载 1 个文档，嵌入模型: moka-ai/m3e-small
+
+=== 开始问答（自选嵌入模型 m3e-small + 本地生成 qwen2.5:0.5b）===
+
+问题: Ollama 支持哪些模型？
+回答: Ollama 支持多种开源模型，例如 Llama 系列、Qwen 通义千问系列、Mistral 等。
+
+问题: 使用 Ollama 下载模型的命令是什么？
+回答: 使用 Ollama 下载模型的命令是 `ollama pull <模型名>`。
+
+问题: Ollama 在无 GPU 时会怎样？
+回答: Ollama 在没有 GPU 时也可以退回到 CPU 运行，只是速度会慢一些。

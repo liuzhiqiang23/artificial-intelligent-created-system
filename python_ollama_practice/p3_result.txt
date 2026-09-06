@@ -1,0 +1,12 @@
+已加载 1 个文档
+
+=== 开始问答 ===
+
+问题: Ollama 支持哪些模型？
+回答: Ollama 支持多种开源模型，例如 Llama 系列、Qwen 通义千问系列、Mistral 等。
+
+问题: Ollama 默认监听在哪个端口？
+回答: Ollama 默认监听在 11434 端口。
+
+问题: Ollama 如何实现 GPU 加速？
+回答: 在有 NVIDIA 显卡的机器上，Ollama 会自动利用 CUDA 进行推理加速；在没有 GPU 时也可以退回到 CPU 运行，只是速度会慢一些。
