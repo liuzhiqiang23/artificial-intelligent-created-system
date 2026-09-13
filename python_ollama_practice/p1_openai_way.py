@@ -14,7 +14,7 @@ client = OpenAI(
     api_key="ollama",  # 本地服务不校验，随意填
 )
 
-MODEL = "qwen2.5:0.5b"  # 需要先用 ollama pull qwen2.5:0.5b 拉取
+MODEL = "qwen2.5-coder:7b"  # 需要先用 ollama pull qwen2.5-coder:7b 拉取
 
 # 创建会话
 resp = client.chat.completions.create(

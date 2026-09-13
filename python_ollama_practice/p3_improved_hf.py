@@ -7,7 +7,7 @@
 3. 加载本地嵌入模型（moka-ai/m3e-small，中文优化）
 4. 加载数据
 5. 构建索引
-6. 创建问答引擎（本地生成模型用 Ollama llama3.2）
+6. 创建问答引擎（本地生成模型用 Ollama qwen2.5-coder:7b）
 7. 开始问答
 """
 # ========== 2. 导入相关的库 ==========
@@ -24,8 +24,8 @@ embed_model = HuggingFaceEmbedding(
     device="cpu",               # 用 CPU 算嵌入，稳
 )
 
-# ========== 本地生成模型（Ollama qwen2.5:0.5b，受显存限制用小模型） ==========
-LLM_MODEL = "qwen2.5:0.5b"
+# ========== 本地生成模型（Ollama qwen2.5-coder:7b） ==========
+LLM_MODEL = "qwen2.5-coder:7b"
 BASE_URL = "http://localhost:11434"
 llm = Ollama(model=LLM_MODEL, base_url=BASE_URL, temperature=0.1, context_window=4096)
 
@@ -53,7 +53,7 @@ questions = [
     "使用 Ollama 下载模型的命令是什么？",
     "Ollama 在无 GPU 时会怎样？",
 ]
-print("\n=== 开始问答（自选嵌入模型 m3e-small + 本地生成 qwen2.5:0.5b）===")
+print("\n=== 开始问答（自选嵌入模型 m3e-small + 本地生成 qwen2.5-coder:7b）===")
 for qa in questions:
     resp = chat_engine.chat(qa)
     print("\n问题:", qa)

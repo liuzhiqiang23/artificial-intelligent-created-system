@@ -85,7 +85,8 @@ header{
 <body>
 <header>
   <div class="brand"><span class="bolt">⚡</span>本地 LLM 问答 <small>· Ollama</small></div>
-  <div class="model-tag" id="modelTag">qwen2.5:0.5b</div>
+  <div class="model-tag" id="modelTag">qwen2.5-coder:7b</div>
+  <!-- 徽章由 loadModels() 从 /api/models 动态覆盖；此值为无模型时的占位，与后端 OLLAMA_MODEL 默认一致 -->
   <div class="mode-pill">
     <button id="mPlain" class="on">直接对话</button>
     <button id="mRag">查本地资料</button>

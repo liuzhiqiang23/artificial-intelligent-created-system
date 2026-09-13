@@ -7,7 +7,7 @@
 """
 import ollama
 
-MODEL = "qwen2.5:0.5b"  # 需要先用 ollama pull qwen2.5:0.5b 拉取
+MODEL = "qwen2.5-coder:7b"  # 需要先用 ollama pull qwen2.5-coder:7b 拉取
 
 # 创建会话（单轮对话）
 response = ollama.chat(

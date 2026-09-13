@@ -17,7 +17,7 @@ from llama_index.embeddings.ollama import OllamaEmbedding
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 BASE_URL = "http://localhost:11434"
-LLM_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:0.5b")
+LLM_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5-coder:7b")
 EMBED_MODEL = "nomic-embed-text"
 
 app = Flask(__name__)
@@ -78,6 +78,10 @@ def api_chat():
             answer = resp["message"]["content"]
         return jsonify({"answer": answer})
     except Exception as e:
+        msg = str(e)
+        # 模型不可用：指向真实根因（模型库环境变量），而非误导用户去 pull
+        if "not found" in msg.lower() or "404" in msg:
+            return jsonify({"error": f"模型不可用：请检查 Ollama 的 OLLAMA_MODELS 环境变量是否指向模型目录（D:\\ollama\\models），重启 ollama serve 后重试；若确实未安装该模型，再执行 ollama pull {LLM_MODEL}。"}), 500
         return jsonify({"error": f"调用失败: {e}"}), 500
 
 if __name__ == "__main__":

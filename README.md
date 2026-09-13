@@ -24,7 +24,8 @@
 ├── 智能生成系统开发.pdf      # 课程资料
 ├── 笔记0903.pdf              # 课件（实践要求出处）
 ├── README.md                 # 本文件
-└── python_ollama_practice/   # 实践项目主目录
+├── python_ollama_practice/   # 实践项目主目录（实践1-3，Ollama+llama-index）
+└── langchain_practice_0910/  # 实践4-6：LangChain/LangGraph/faiss/zvec（0910任务书）
     ├── data/                 # 本地知识文件（被检索的语料）
     ├── venv/                 # Python 虚拟环境（已 gitignore，不入库）
     ├── p1_ollama_way.py      # 实践1：Ollama 方式访问本地 LLM

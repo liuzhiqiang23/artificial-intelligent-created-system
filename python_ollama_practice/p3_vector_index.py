@@ -14,7 +14,7 @@ from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.ollama import OllamaEmbedding
 
 # ========== 1. 导入相关的库（已导入）+ 设置本地模型 ==========
-LLM_MODEL = "qwen2.5:0.5b"
+LLM_MODEL = "qwen2.5-coder:7b"
 EMBED_MODEL = "nomic-embed-text"
 BASE_URL = "http://localhost:11434"
 

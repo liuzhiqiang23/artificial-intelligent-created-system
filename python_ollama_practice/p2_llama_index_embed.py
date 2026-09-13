@@ -19,11 +19,16 @@ from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.ollama import OllamaEmbedding
 
 # ========== 2. 设置本地模型 ==========
-LLM_MODEL = "qwen2.5:0.5b"        # 生成模型（需 ollama pull qwen2.5:0.5b）
+LLM_MODEL = "qwen2.5-coder:7b"    # 生成模型（需 ollama pull qwen2.5-coder:7b）
 EMBED_MODEL = "nomic-embed-text"  # 嵌入模型（需 ollama pull nomic-embed-text）
 BASE_URL = "http://localhost:11434"  # Ollama 服务地址
 
-Settings.llm = Ollama(model=LLM_MODEL, base_url=BASE_URL)
+Settings.llm = Ollama(
+    model=LLM_MODEL,
+    base_url=BASE_URL,
+    request_timeout=600.0,   # 7B 本地模型单次生成+refine 多轮调用较慢，默认超时太短会 ReadTimeout
+    context_window=4096,
+)
 Settings.embed_model = OllamaEmbedding(
     model_name=EMBED_MODEL, base_url=BASE_URL
 )
