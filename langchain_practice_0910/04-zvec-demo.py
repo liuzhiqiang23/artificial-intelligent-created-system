@@ -45,6 +45,8 @@ collection = zvec.create_and_open(
 )
 
 # 使用 zvec：将文档的向量数据存入集合
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)  # 屏蔽 VectorQuery 将改名为 Query 的弃用警告
 for i, emb in enumerate(doc_embeddings):
     collection.insert(
         zvec.Doc(
