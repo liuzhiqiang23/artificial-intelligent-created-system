@@ -35,6 +35,10 @@ schema = zvec.CollectionSchema(
 )
 
 # 使用 zvec：根据"表"结构创建数据集合
+# （重复运行时先清理上次的集合目录，create_and_open 要求路径不能已存在）
+import shutil
+if os.path.exists("./zvec/collection"):
+    shutil.rmtree("./zvec/collection")
 collection = zvec.create_and_open(
     path="./zvec/collection",
     schema=schema,

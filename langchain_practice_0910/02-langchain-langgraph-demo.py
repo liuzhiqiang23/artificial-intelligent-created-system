@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 # 实践5：使用 LangGraph（对照《笔记0910.pdf》第5节）
 import os
+import warnings
+# 屏蔽 hub.pull 的弃用警告（新版 LangChain 提示该写法将迁移到 LangSmith SDK，不影响功能）
+try:
+    from langchain_core._api.deprecation import LangChainDeprecationWarning
+    warnings.filterwarnings("ignore", category=LangChainDeprecationWarning)
+except Exception:
+    warnings.filterwarnings("ignore", category=DeprecationWarning)
 # LangSmith 监控（可选）：老师示例里的 key 是演示用的，本地运行不需要联网监控，
 # 需要启用时在 https://smith.langchain.com 注册自己的账号并换成自己的 API Key
 os.environ["LANGSMITH_TRACING"] = "false"
