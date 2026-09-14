@@ -2,12 +2,11 @@
 # 实践5：使用 LangGraph（对照《笔记0910.pdf》第5节）
 import os
 import warnings
-# LangSmith 监控（可选）：老师示例里的 key 是演示用的，本地运行不需要联网监控，
-# 需要启用时在 https://smith.langchain.com 注册自己的账号并换成自己的 API Key
-os.environ["LANGSMITH_TRACING"] = "false"
-# os.environ["LANGSMITH_ENDPOINT"] = "https://api.smith.langchain.com"
-# os.environ["LANGSMITH_API_KEY"] = "你的API Key"
-# os.environ["LANGSMITH_PROJECT"] = "0910LangChain"
+# LangSmith 监控（任务书5.3）：由 Windows 用户环境变量控制，本机已配置
+# （LANGSMITH_TRACING=true / LANGSMITH_API_KEY / LANGSMITH_ENDPOINT / LANGSMITH_PROJECT=0910LangChain）
+# 跟踪记录见 https://smith.langchain.com 的 Projects → 0910LangChain → Tracing
+# 若要临时关闭跟踪，取消下一行注释：
+# os.environ["LANGSMITH_TRACING"] = "false"
 
 # 引入依赖
 from langchain_community.document_loaders import TextLoader
