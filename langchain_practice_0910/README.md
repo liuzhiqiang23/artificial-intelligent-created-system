@@ -1,6 +1,7 @@
-# LangChain / LangGraph 实践（2026-09-10 任务书）
+# LangChain / LangGraph 实践（2026-09-10 + 2026-09-17 任务书）
 
-> 对照《笔记0910.pdf》第 4-6 节：**实践4 使用 LangChain → 实践5 使用 LangGraph → 实践6 无框架自选向量数据库（faiss / zvec）**。
+> 《笔记0910.pdf》第 4-6 节：**实践4 使用 LangChain → 实践5 使用 LangGraph → 实践6 无框架自选向量数据库（faiss / zvec）**。
+> 《笔记0917.pdf》第三节：**数据导入（LangChain 四种加载方式 + LlamaIndex SimpleDirectoryReader）**。
 > 本目录代码已在 Windows + RTX 3050 (4GB) 笔记本上**全部实测跑通**。
 
 ## 环境（已验证的版本组合）
@@ -16,6 +17,7 @@
 | langchain-classic | 1.0.8 | 提供 `langchain_classic.hub` |
 | faiss-cpu | 1.15.0 | 实践6 向量库方案一 |
 | zvec | 0.7.0 | 实践6 向量库方案二 |
+| llama-index-core | 最新 | 0917 数据导入实践（SimpleDirectoryReader） |
 | torch | 2.14.0 (CPU) | sentence-transformers 依赖 |
 | Ollama 模型 | deepseek-r1:latest (7B, 5.2GB) + 本地 BGE-small-zh-v1.5 嵌入 | |
 
@@ -27,6 +29,7 @@ langchain_practice_0910/
 ├── 02-langchain-langgraph-demo.py # 实践5：TextLoader → 300/30分块 → hub提示词 → StateGraph(retrieve→generate)
 ├── 03-faiss-demo.py               # 实践6A：sentence-transformers + faiss IndexFlatL2 + 出处编号
 ├── 04-zvec-demo.py                # 实践6B：zvec Schema/Collection/insert/query（任务书允许沿用BGE）
+├── 05-data-loading-demo.py        # 0917：TextLoader/Document/DirectoryLoader + LlamaIndex SimpleDirectoryReader/元数据
 └── txt/wiki.txt                   # 黑神话：悟空本地语料（sogou 百科页）
 ```
 
@@ -41,6 +44,7 @@ python 01-langchain-base-demo.py   # 实践4
 python 02-langchain-langgraph-demo.py  # 实践5
 python 03-faiss-demo.py            # 实践6 faiss+BGE
 python 04-zvec-demo.py             # 实践6 zvec+BGE
+python 05-data-loading-demo.py     # 0917 数据导入（秒级，不依赖大模型）
 ```
 
 实测输出要点：
@@ -58,6 +62,8 @@ python 04-zvec-demo.py             # 实践6 zvec+BGE
 6. **zvec+MiniLM 变体**：任务书允许嵌入"使用之前的 BGE"，故 04 直接用 BGE；如需 all-MiniLM-L6-v2，改 `SentenceTransformer('all-MiniLM-L6-v2')` 首次联网下载即可。
 7. **LangSmith 监控**（任务书 5.3 可选）：老师示例里的 API Key 是演示 Key，已置 `LANGSMITH_TRACING=false`；需要时在 smith.langchain.com 注册自己的账号换 Key。
 8. **Windows 控制台中文**：运行前 `set PYTHONIOENCODING=utf-8`（PyCharm 运行一般不需要）。
+9. **DirectoryLoader 默认报错**（0917）：默认基于 unstructured 库会 `ModuleNotFoundError`，纯文本目录用 `loader_cls=TextLoader` + `loader_kwargs={"encoding": "utf-8"}` 绕开。
+10. **LlamaIndex 与 LangChain 的属性名不同**（0917 考点）：llama_index 的 Document 内容在 `text` 属性，LangChain 在 `page_content`；`os.path.dirname(__file__)` 在 Jupyter 里不可用（无 `__file__`）。
 
 ## 环境部署要点（本机）
 
