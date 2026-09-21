@@ -31,7 +31,7 @@ python 4-llama-reader.py        # 秒级
 
 1. **嵌入模型路径**：老师 modelscope 缓存路径（`/Users/will/.cache/modelscope/...`）改为本机 HuggingFace 缓存快照绝对路径；MiniLM 首次下载直连 hf.co 不通时，设 `HF_ENDPOINT=https://hf-mirror.com` 走国内镜像。
 2. **生成模型**：`openbmb/minicpm5-2b` 本机未拉取，按 0910 惯例改 `deepseek-r1:latest`。
-3. **DirectoryLoader 默认报错**：默认 unstructured 加载器会 `ModuleNotFoundError`，按任务书说明①用 `loader_cls=TextLoader` + `loader_kwargs={"encoding":"utf-8"}`（老师原句保留在注释里）。
+3. **DirectoryLoader 默认加载器**：任务书说明①的绕法（`loader_cls=TextLoader` + `encoding`）保底可用；**本机已装 `unstructured` 0.18.32 + `pypdf` + `python-magic-bin`，老师原版（默认 unstructured 加载器）也已实测跑通**。⚠️ Windows 坑：只装 `python-magic` 缺 libmagic DLL 时 `import unstructured.partition.auto` 会**无报错挂死**，装 `python-magic-bin`（自带 DLL）即好；nltk 数据用 `punkt_tab`（已随包就位）。
 4. **zvec 重跑**：`create_and_open` 要求路径不存在，save 脚本已内置清理；insert/query 的 DeprecationWarning 用调用现场 `catch_warnings` 屏蔽。
 5. **存/查配对**：2-save 与 2-search 必须使用同一个嵌入模型（本机已写死同一 MiniLM 快照路径），先 save 后 search。
 6. **考点差异**：LlamaIndex Document 内容在 `text` 属性（LangChain 是 `page_content`）；`os.path.dirname(__file__)` 在 Jupyter 不可用。
