@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 # 2-zvec-minilm-save：MiniLM 嵌入 + zvec 建库存储（老师 Mac 代码 Windows 适配版）
 # 注意：必须先跑本脚本建库，再跑 2-zvec-minilm-search.py 查询（两脚本必须用同一个嵌入模型！）
+# 重新建库前先停掉还在运行的 search（它开着库文件，会锁住删除）
 import os
 import shutil
+import time
 import warnings
 
 # 1. 准备文档数据
@@ -41,9 +43,20 @@ schema = zvec.CollectionSchema(
 )
 # 5.使用zvec：根据"表"结构创建数据集合
 # Windows 适配：create 要求路径不存在，重跑前先清掉上次残留
+# Windows 下库文件可能被仍在运行的 search 进程锁住（WinError 32），重试几次并给人话提示
 coll_path = os.path.join(script_dir, 'zvec', 'coll')
 if os.path.exists(coll_path):
-    shutil.rmtree(coll_path)
+    for attempt in range(3):
+        try:
+            shutil.rmtree(coll_path)
+            break
+        except PermissionError:
+            if attempt == 2:
+                raise RuntimeError(
+                    f"删除 {coll_path} 失败：库文件被其它进程占用。\n"
+                    "请先停止还在运行的 2-zvec-minilm-search.py（点运行窗口的红色方块），再跑本脚本。"
+                )
+            time.sleep(1)
 collection = zvec.create_and_open(
     path=coll_path,
     schema=schema,
