@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img src="assets/brand-header.svg" width="100%" alt="liuzhiqiang23 的作品与笔记">
+</p>
+
 # 智能生成系统
 
 > 基于本地大模型（Ollama + llama-index）的 LLM 部署与应用实践项目。
@@ -133,3 +138,9 @@ python p2_llama_index_embed.py  # 实践2：llama-index 嵌入
 - 课程资料（PDF）版权归原作者，仅供学习使用。
 - 实践代码为本项目独立完成，可自由参考。
 - 详细实践过程与排障记录见配套文档。
+
+---
+
+<p align="center">
+  🔗 <a href="https://github.com/liuzhiqiang23">GitHub 主页（含 AI 全自动剪辑的作品集视频）</a> · <a href="https://www.zhihu.com/people/yi-bu-gen-jiang">知乎 @义不艮将</a> · <a href="https://gitee.com/liu-zhiqiang20030520">Gitee 主页</a>
+</p>

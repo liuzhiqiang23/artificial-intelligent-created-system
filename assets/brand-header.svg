@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="170" viewBox="0 0 1000 170">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/><stop offset="0.55" stop-color="#1e1b4b"/><stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f2a93b"/><stop offset="1" stop-color="#ffd700"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="170" rx="14" fill="url(#bg)"/>
+  <rect x="0" y="162" width="1000" height="8" rx="4" fill="url(#gold)"/>
+  <text x="500" y="62" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="34" font-weight="700" fill="#ffffff">liuzhiqiang23 的作品与笔记</text>
+  <text x="500" y="102" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#a5b4fc">AI / LLM 应用探索 · 全息闪卡流水线 · AI 全自动剪辑</text>
+  <text x="500" y="138" text-anchor="middle" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="15" fill="#e2e8f0">GitHub 主页 · 知乎 @义不艮将 · 掘金 @liuzhiqiang23</text>
+</svg>
