@@ -8,7 +8,7 @@ cd /d "%~dp0"
 set "OLLAMA=%LOCALAPPDATA%\Programs\Ollama\ollama.exe"
 set "PY=venv\Scripts\python.exe"
 set "URL=http://127.0.0.1:5000"
-set "OLLAMA_MODEL=qwen2.5-coder:7b"
+set "OLLAMA_MODEL=qwen2.5:0.5b"
 
 echo.
 echo  ============================================
