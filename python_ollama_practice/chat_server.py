@@ -17,7 +17,7 @@ from llama_index.embeddings.ollama import OllamaEmbedding
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 BASE_URL = "http://localhost:11434"
-LLM_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5-coder:7b")
+LLM_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:0.5b")
 EMBED_MODEL = "nomic-embed-text"
 
 app = Flask(__name__)
