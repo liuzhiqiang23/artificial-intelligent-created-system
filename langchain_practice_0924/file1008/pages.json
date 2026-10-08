@@ -1,0 +1,17 @@
+[
+  {
+    "page": 1,
+    "title": "智能生成系统期中复习",
+    "content": "本页覆盖格式文件加载：JSON、Office、Markdown、HTML 四类。"
+  },
+  {
+    "page": 2,
+    "title": "向量检索要点",
+    "content": "BGE-small-zh 是 512 维，MiniLM 是 384 维，存查必须同模型。"
+  },
+  {
+    "page": 3,
+    "title": "OCR 要点",
+    "content": "tesseract 是引擎，pytesseract 是遥控器；UnstructuredImageLoader 只认 PATH。"
+  }
+]
