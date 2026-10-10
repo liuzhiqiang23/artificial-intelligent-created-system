@@ -3,6 +3,8 @@
   <img src="assets/brand-header.svg" width="100%" alt="liuzhiqiang23 的作品与笔记">
 </p>
 
+**[English](./README_EN.md) | 中文**
+
 # 智能生成系统
 
 > 基于本地大模型（Ollama + llama-index）的 LLM 部署与应用实践项目。
